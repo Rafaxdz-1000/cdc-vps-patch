@@ -223,12 +223,75 @@ ILLUS = {
         '<path d="M140 90 L420 90 L400 135 L160 135 Z" fill="#2563EB"/>'
         '<rect x="150" y="130" width="45" height="14" fill="#38BDF8"/><rect x="230" y="130" width="45" height="14" fill="#00C0C0"/><rect x="310" y="130" width="45" height="14" fill="#38BDF8"/>'
         '<rect x="250" y="180" width="60" height="80" rx="6" fill="#0B1629"/><circle cx="300" cy="222" r="4" fill="#FBBF24"/></svg>'),
+    # ---- vocabulario de ENSINO ----
+    "brain": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<g stroke="#2563EB" stroke-width="3" opacity=".6"><line x1="120" y1="80" x2="250" y2="150"/><line x1="120" y1="220" x2="250" y2="150"/>'
+        '<line x1="250" y1="150" x2="380" y2="80"/><line x1="250" y1="150" x2="380" y2="220"/>'
+        '<line x1="380" y1="80" x2="470" y2="150"/><line x1="380" y1="220" x2="470" y2="150"/></g>'
+        '<circle cx="120" cy="80" r="22" fill="#38BDF8"/><circle cx="120" cy="220" r="22" fill="#2563EB"/>'
+        '<circle cx="250" cy="150" r="34" fill="#fff"/><circle cx="380" cy="80" r="22" fill="#2563EB"/>'
+        '<circle cx="380" cy="220" r="22" fill="#38BDF8"/><circle cx="470" cy="150" r="26" fill="#00C0C0"/>'
+        '<text x="250" y="162" font-family="Montserrat" font-size="28" font-weight="900" fill="#0B1629" text-anchor="middle">IA</text></svg>'),
+    "alert": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<path d="M280 60 L400 250 L160 250 Z" fill="#FBBF24"/>'
+        '<rect x="270" y="120" width="20" height="70" rx="10" fill="#0B1629"/><circle cx="280" cy="215" r="12" fill="#0B1629"/>'
+        '<rect x="60" y="120" width="70" height="90" rx="12" fill="#12325f"/><rect x="72" y="142" width="46" height="8" rx="4" fill="#FB7185"/><rect x="72" y="160" width="30" height="8" rx="4" fill="#5b6f97"/>'
+        '<rect x="430" y="120" width="70" height="90" rx="12" fill="#12325f"/><rect x="442" y="142" width="46" height="8" rx="4" fill="#FB7185"/><rect x="442" y="160" width="30" height="8" rx="4" fill="#5b6f97"/></svg>'),
+    "docs": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="140" y="80" width="120" height="160" rx="12" fill="#12325f"/>'
+        '<rect x="165" y="62" width="120" height="160" rx="12" fill="#1e4a86"/>'
+        '<rect x="190" y="44" width="120" height="160" rx="12" fill="#fff"/>'
+        '<rect x="208" y="74" width="84" height="8" rx="4" fill="#9db4d6"/><rect x="208" y="96" width="62" height="8" rx="4" fill="#c3d4ec"/><rect x="208" y="118" width="74" height="8" rx="4" fill="#c3d4ec"/>'
+        '<circle cx="410" cy="150" r="52" fill="none" stroke="#38BDF8" stroke-width="10"/>'
+        '<line x1="448" y1="188" x2="486" y2="226" stroke="#38BDF8" stroke-width="12" stroke-linecap="round"/>'
+        '<text x="410" y="162" font-family="Montserrat" font-size="28" font-weight="900" fill="#38BDF8" text-anchor="middle">IA</text></svg>'),
+    "timeline": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<line x1="60" y1="160" x2="500" y2="160" stroke="#2563EB" stroke-width="6" stroke-linecap="round"/>'
+        '<circle cx="110" cy="160" r="15" fill="#5b6f97"/><circle cx="230" cy="160" r="15" fill="#2563EB"/>'
+        '<circle cx="350" cy="160" r="19" fill="#38BDF8"/><circle cx="470" cy="160" r="23" fill="#00C0C0"/>'
+        '<rect x="80" y="96" width="62" height="34" rx="8" fill="#12325f"/><text x="111" y="120" font-family="Montserrat" font-size="19" font-weight="800" fill="#8ea3c4" text-anchor="middle">1956</text>'
+        '<rect x="200" y="96" width="62" height="34" rx="8" fill="#12325f"/><text x="231" y="120" font-family="Montserrat" font-size="19" font-weight="800" fill="#8ea3c4" text-anchor="middle">1997</text>'
+        '<rect x="319" y="196" width="62" height="34" rx="8" fill="#12325f"/><text x="350" y="220" font-family="Montserrat" font-size="19" font-weight="800" fill="#38BDF8" text-anchor="middle">2012</text>'
+        '<rect x="439" y="196" width="62" height="34" rx="8" fill="#0f3324"/><text x="470" y="220" font-family="Montserrat" font-size="19" font-weight="800" fill="#22C55E" text-anchor="middle">2022</text></svg>'),
+    "tokens": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="70" y="118" width="92" height="64" rx="12" fill="#2563EB"/><text x="116" y="159" font-family="Montserrat" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">in</text>'
+        '<rect x="176" y="118" width="92" height="64" rx="12" fill="#38BDF8"/><text x="222" y="159" font-family="Montserrat" font-size="24" font-weight="800" fill="#0B1629" text-anchor="middle">te</text>'
+        '<rect x="282" y="118" width="92" height="64" rx="12" fill="#00C0C0"/><text x="328" y="159" font-family="Montserrat" font-size="24" font-weight="800" fill="#04202a" text-anchor="middle">li</text>'
+        '<rect x="388" y="118" width="92" height="64" rx="12" fill="#12325f"/><text x="434" y="159" font-family="Montserrat" font-size="24" font-weight="800" fill="#8ea3c4" text-anchor="middle">gen</text>'
+        '<circle cx="116" cy="215" r="6" fill="#5b6f97"/><circle cx="222" cy="215" r="6" fill="#5b6f97"/><circle cx="328" cy="215" r="6" fill="#5b6f97"/><circle cx="434" cy="215" r="6" fill="#5b6f97"/></svg>'),
+    "mic": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="250" y="50" width="60" height="108" rx="30" fill="#2563EB"/>'
+        '<path d="M225 138 a55 55 0 0 0 110 0" fill="none" stroke="#38BDF8" stroke-width="10" stroke-linecap="round"/>'
+        '<line x1="280" y1="193" x2="280" y2="228" stroke="#38BDF8" stroke-width="10" stroke-linecap="round"/>'
+        '<g stroke="#00C0C0" stroke-width="8" stroke-linecap="round" opacity=".8"><line x1="150" y1="120" x2="150" y2="160"/><line x1="182" y1="100" x2="182" y2="180"/>'
+        '<line x1="378" y1="100" x2="378" y2="180"/><line x1="410" y1="120" x2="410" y2="160"/></g>'
+        '<rect x="440" y="108" width="82" height="92" rx="12" fill="#fff"/>'
+        '<rect x="457" y="130" width="48" height="7" rx="3" fill="#9db4d6"/><rect x="457" y="148" width="34" height="7" rx="3" fill="#c3d4ec"/>'
+        '<path d="M459 174 l8 8 15 -17" stroke="#22C55E" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'),
+    "tools": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="160" y="120" width="240" height="120" rx="16" fill="#2563EB"/>'
+        '<path d="M230 120 v-20 a50 20 0 0 1 100 0 v20" fill="none" stroke="#38BDF8" stroke-width="10"/>'
+        '<rect x="160" y="160" width="240" height="16" fill="#0B1629" opacity=".45"/>'
+        '<circle cx="280" cy="168" r="17" fill="#0B1629"/>'
+        '<rect x="430" y="82" width="14" height="70" rx="7" fill="#00C0C0"/><circle cx="437" cy="72" r="16" fill="#00C0C0"/>'
+        '<rect x="102" y="82" width="14" height="70" rx="7" fill="#FBBF24"/><path d="M102 82 l14 0 l0 -18 l-14 0 z" fill="#FBBF24"/></svg>'),
 }
 _ILLUS_KEYS = list(ILLUS.keys())
 
 import re as _re
 # match de palavra-chave (pt-BR, minusculo) -> ilustracao mais relevante ao tema do slide
 KEYWORD_MAP = [
+    # ── ENSINO primeiro: termos especificos vencem os genericos de Vendas ──
+    (r'\bllm\b|modelo de linguagem|rede neural|machine learning|deep learning|aprendizado de m|fine.?tuning|treinad[oa] com|bilh[oõ]es de texto', 'brain'),
+    (r'alucina|inventa|inventar|informa[cç][aã]o falsa|resposta errada|checar a fonte|desconfi|deepfake|\bfake\b|nao existe|n[aã]o existe', 'alert'),
+    (r'\brag\b|base de conhecimento|seus arquivos|documento|\bpdf\b|consultar a fonte|le os arquivos|l[eê] os arquivos', 'docs'),
+    (r'hist[oó]ria da ia|linha do tempo|de 1956|surgiu|nasceu o termo|marcos|evolu[cç][aã]o da ia|1956|1997|2012|2022|d[eé]cadas', 'timeline'),
+    (r'\btoken|janela de contexto|esquece o come[cç]o', 'tokens'),
+    (r'reuni[aã]o|reuni[oõ]es|transcri|ata de|grava[cç][aã]o|resumir o que foi dito', 'mic'),
+    (r'ferramenta certa|melhores ferramentas|qual ferramenta|ferramentas de ia|para cada tarefa|pra cada tarefa', 'tools'),
+    (r'\bprompt|como perguntar|como pedir|instru[cç][aã]o para a ia', 'chat'),
+    (r'futuro do trabalho|roubar emprego|substituir voc|mercado de trabalho|carreira|profiss[aã]o', 'growth'),
+    # ── VENDAS ──
     (r'whats|chatbot|chat|atend|mensag|convers|direct|duvida|d[uú]vida|responder|sac', 'chat'),
     (r'lead|tr[aá]fego|an[uú]ncio|\bads\b|convers|roi|campanha|google ads|meta ads|impuls', 'target'),
     (r'google meu neg|maps|mapa|local|no google|perto|bairro|encontr|busca local|seo local', 'maps'),
