@@ -193,8 +193,51 @@ ILLUS = {
         '<g fill="#38BDF8"><circle cx="360" cy="200" r="52"/></g><circle cx="360" cy="200" r="22" fill="#0B1629"/>'
         '<circle cx="470" cy="120" r="34" fill="#00C0C0"/><circle cx="470" cy="120" r="14" fill="#0B1629"/>'
         '<text x="230" y="164" font-family="Montserrat" font-size="44" font-weight="900" fill="#fff" text-anchor="middle">IA</text></svg>'),
+    "chat": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="110" y="60" width="230" height="140" rx="28" fill="#2563EB"/><polygon points="160,196 160,240 208,196" fill="#2563EB"/>'
+        '<circle cx="180" cy="130" r="13" fill="#fff"/><circle cx="230" cy="130" r="13" fill="#fff"/><circle cx="280" cy="130" r="13" fill="#fff"/>'
+        '<rect x="300" y="112" width="150" height="92" rx="24" fill="#12325f"/><polygon points="398,200 398,236 356,200" fill="#12325f"/>'
+        '<rect x="322" y="142" width="88" height="11" rx="5" fill="#38BDF8"/><rect x="322" y="164" width="58" height="11" rx="5" fill="#7f9fd0"/>'
+        '<circle cx="440" cy="92" r="30" fill="#22C55E"/><path d="M427 92 l9 9 16 -19" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'),
+    "target": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<circle cx="250" cy="155" r="100" fill="none" stroke="#1e3a6b" stroke-width="18"/>'
+        '<circle cx="250" cy="155" r="64" fill="none" stroke="#2563EB" stroke-width="18"/><circle cx="250" cy="155" r="28" fill="#38BDF8"/>'
+        '<line x1="380" y1="55" x2="258" y2="150" stroke="#FBBF24" stroke-width="11" stroke-linecap="round"/>'
+        '<polygon points="258,150 292,132 286,168" fill="#FBBF24"/><polygon points="380,55 352,60 372,82" fill="#FBBF24"/></svg>'),
+    "maps": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<ellipse cx="280" cy="250" rx="70" ry="18" fill="rgba(56,189,248,.18)"/>'
+        '<path d="M280 60 C214 60 170 108 170 168 C170 232 280 268 280 268 C280 268 390 232 390 168 C390 108 346 60 280 60 Z" fill="#2563EB"/>'
+        '<circle cx="280" cy="162" r="42" fill="#0B1629"/><circle cx="280" cy="162" r="20" fill="#38BDF8"/></svg>'),
+    "store": ('<svg width="560" height="300" viewBox="0 0 560 300">'
+        '<rect x="150" y="130" width="260" height="130" rx="10" fill="#12325f"/>'
+        '<path d="M140 90 L420 90 L400 135 L160 135 Z" fill="#2563EB"/>'
+        '<rect x="150" y="130" width="45" height="14" fill="#38BDF8"/><rect x="230" y="130" width="45" height="14" fill="#00C0C0"/><rect x="310" y="130" width="45" height="14" fill="#38BDF8"/>'
+        '<rect x="250" y="180" width="60" height="80" rx="6" fill="#0B1629"/><circle cx="300" cy="222" r="4" fill="#FBBF24"/></svg>'),
 }
 _ILLUS_KEYS = list(ILLUS.keys())
+
+import re as _re
+# match de palavra-chave (pt-BR, minusculo) -> ilustracao mais relevante ao tema do slide
+KEYWORD_MAP = [
+    (r'whats|chatbot|chat|atend|mensag|convers|direct|duvida|d[uú]vida|responder|sac', 'chat'),
+    (r'lead|tr[aá]fego|an[uú]ncio|\bads\b|convers|roi|campanha|google ads|meta ads|impuls', 'target'),
+    (r'google meu neg|maps|mapa|local|no google|perto|bairro|encontr|busca local|seo local', 'maps'),
+    (r'loja|varejo|roupa|moda|vitrine|produto|estoque|e-?commerce', 'store'),
+    (r'agenda|reserva|marca[cç]|hor[aá]rio|24 ?h|24 ?hora|noite|dorme|sozinho|autom[aá]tico', 'robot_24h'),
+    (r'autom|tarefa|processo|sistema|repetit|integra|fluxo|workflow', 'gears'),
+    (r'cresc|resultado|aumentar|vend|receita|ranking|topo|escala|fatur', 'growth'),
+    (r'atras|perde|perda|rel[oó]gio|tempo|espera|demora', 'clock_lost'),
+    (r'agente|assistente|rob[oô]|\bia\b|intelig', 'robot_24h'),
+]
+
+
+def _pick_by_text(text, offset=0):
+    """Escolhe a ilustracao pelo tema (keyword). Se nada casar, cai no hash (variado)."""
+    t = str(text or "").lower()
+    for pat, key in KEYWORD_MAP:
+        if _re.search(pat, t):
+            return ILLUS.get(key) or _pick_illus(text, offset)
+    return _pick_illus(text, offset)
 
 _ILL_CSS = """
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -254,7 +297,7 @@ def slide_illustration(slide_index, total, categoria, titulo, body,
     seed = seed or titulo
 
     if is_cover:
-        illus = _pick_illus(seed, 0)
+        illus = _pick_by_text(titulo, 0)
         h1 = esc(titulo).upper()
         fs = _fs(titulo, [(24, 82), (38, 68), (56, 56), (999, 48)])
         return ("<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'>%s<style>%s</style></head><body>"
@@ -285,7 +328,7 @@ def slide_illustration(slide_index, total, categoria, titulo, body,
                                            _nl2br(body) if body else "Fale com a gente e monte seu atendimento com IA.")
 
     # content slide (2..total-1)
-    illus = _pick_illus(seed, slide_index)
+    illus = _pick_by_text((categoria or "") + " " + (titulo or "") + " " + (body or ""), slide_index)
     eyeb = esc(categoria) if categoria else ("Ponto %d" % slide_index)
     h2fs = _fs(titulo, [(28, 60), (46, 50), (70, 42), (999, 36)])
     pfs = _fs(body, [(110, 34), (180, 30), (999, 26)])
