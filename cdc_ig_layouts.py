@@ -90,6 +90,9 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .ck{width:32px;height:32px}.hn{font-size:30px;color:#536471;font-weight:400;line-height:1}
 .tw{font-size:52px;line-height:1.32;font-weight:500;color:#0F1419;letter-spacing:-.5px;margin-top:20px}
 .tw .em{color:#2563EB;font-weight:600}
+/* slides sem imagem (2..N): bloco de texto centralizado verticalmente entre header e footer */
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.mid .tw{margin-top:0}
 .img{margin-top:34px;border-radius:26px;overflow:hidden;border:1px solid #E1E8ED;height:430px;position:relative;background:#0B1629}
 .img img{width:100%;height:100%;object-fit:cover}
 .thread{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;margin-top:26px;
@@ -128,19 +131,26 @@ def slide_tweet(slide_index, total, titulo, body, image_data_uri=None,
     text = _nl2br(body if body else titulo)
     parts = ['<div class="slide">', _XBIRD, _tweet_header(handle)]
 
+    mid = []
     if not is_cover:
-        parts.append('<div class="thread"><span class="dot"></span>Thread &middot; %d de %d</div>'
-                     % (slide_index, total))
+        mid.append('<div class="thread"><span class="dot"></span>Thread &middot; %d de %d</div>'
+                   % (slide_index, total))
     raw = body if body else titulo
     twfs = _fs(raw, [(90, 52), (150, 46), (230, 40), (999, 34)])
-    parts.append('<div class="tw" style="font-size:%dpx">%s</div>' % (twfs, text))
+    mid.append('<div class="tw" style="font-size:%dpx">%s</div>' % (twfs, text))
 
     if is_cover and image_data_uri:
-        parts.append('<div class="img"><img src="%s" alt=""></div>' % esc(image_data_uri))
+        mid.append('<div class="img"><img src="%s" alt=""></div>' % esc(image_data_uri))
 
     if is_cta:
-        url = cta_url or ("https://%s" % site)
-        parts.append('<a class="big-cta">%s &rarr;</a>' % esc(site))
+        mid.append('<a class="big-cta">%s &rarr;</a>' % esc(site))
+
+    if is_cover:
+        # capa: texto no topo + imagem de contexto logo abaixo (fluxo normal)
+        parts.extend(mid)
+    else:
+        # demais slides: bloco de texto centralizado verticalmente entre header e footer
+        parts.append('<div class="mid">%s</div>' % "".join(mid))
 
     # footer
     footer_time = ('<b>Clube dos Cisnes</b> &middot; IA e tecnologia para o seu neg&oacute;cio'
